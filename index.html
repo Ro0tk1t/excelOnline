@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<link rel="stylesheet" href="https://unpkg.com/x-data-spreadsheet@1.1.8/dist/xspreadsheet.css">
+<script src="https://unpkg.com/x-data-spreadsheet@1.1.8/dist/xspreadsheet.js"></script>
+<script src="https://unpkg.com/x-data-spreadsheet@1.1.8/dist/locale/zh-cn.js"></script>
+<script>
+    x_spreadsheet.locale('zh-cn');
+</script>
+
+
+<body>
+<div id="x-spreadsheet-demo">
+    <script>
+        // 你可以这样创建
+        const xs = x_spreadsheet("#x-spreadsheet-demo", {});
+
+        var data;
+        var row;
+        var col;
+        xs.on('cell-edited', (text, ri, ci) => {
+                    data = text;
+                    row = ri;
+                    col =  ci;
+                });
+        xs.on('cell-selected', (text, ri, ci) => {
+                    console.log(data, row, col);
+                    console.log(text, ri, ci);
+                    //data = text;
+                });
+    </script>
+</div>
+
+</body>
+</html>
